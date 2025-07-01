@@ -4,9 +4,9 @@ import json
 from flask import Flask, request, redirect, jsonify
 
 # Spotify Credentials
-CLIENT_ID = '1150ef5ecf204b25abb11b03dd0874fe'
-CLIENT_SECRET = 'cd9b83c2ce8e420d990f8b4ed4162bd2'
-REDIRECT_URI = 'http://127.0.0.1:3000/callback'
+CLIENT_ID = 'e9e55e345a0149749e73a7d958746e32'
+CLIENT_SECRET = 'fc7624fb20974c04bd35a32f79cce7d4'
+REDIRECT_URI = 'https://blendjam.vercel.app/callback'
 
 app = Flask(__name__)
 access_token = None
@@ -104,5 +104,5 @@ def get_top_tracks():
     )
 
 if __name__ == '__main__':
-    print("✅ Go to http://127.0.0.1:3000 in your browser to begin Spotify login.")
+    print("✅ Go to https://blendjam.vercel.app/callback in your browser to begin Spotify login.")
     app.run(port=3000, debug=True)
