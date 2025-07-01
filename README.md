@@ -2,13 +2,13 @@
 
 MixSpace is a dynamic, community-powered music curation system that transforms shared spaces like gyms, cafes, or retail stores into immersive audio environments tailored to the people currently inside.
 
-# 🚀 What It Does
+## 🚀 What It Does
 MixSpace bridges the gap between public music systems and individual taste. Using Spotify’s API and personal top tracks, MixSpace creates a real-time, crowd-sourced playlist that adapts to the preferences of everyone in the room.
 
-# 🔁 The Problem
+## 🔁 The Problem
 Most public spaces play music selected by a single person—or worse, a generic playlist. This often leaves customers listening to music they don’t enjoy. MixSpace was built to fix that by letting everyone in the space contribute passively to what’s playing.
 
-# 🎤 How It Works
+## 🎤 How It Works
 Scan to Join
 Users scan a QR code to authenticate with their Spotify account.
 
@@ -24,7 +24,7 @@ MixSpace filters users’ top tracks to match the vibe of the current prompt usi
 Live Playlist Evolution
 As more users scan in, the playlist evolves. The host controls how frequently songs shuffle and how much influence new users have over the current playlist.
 
-# 🧠 Key Features
+## 🧠 Key Features
 🎧 Spotify Integration – Leverages real listening history from Spotify for personalized curation.
 
 📡 QR Code Authentication – Frictionless entry with no sign-up or app install required.
@@ -35,7 +35,7 @@ As more users scan in, the playlist evolves. The host controls how frequently so
 
 🛠️ Host Control Panel – Customize prompt, shuffle frequency, and playback behavior.
 
-# 🛠️ Tech Stack
+## 🛠️ Tech Stack
 Frontend: 
 
 Backend: 
@@ -44,7 +44,7 @@ APIs:
 
 Authentication: 
 
-# 💡 Use Cases
+## 💡 Use Cases
 Gyms: Energize the space with songs your members actually listen to.
 
 Cafes: Create a relaxing vibe that reflects the crowd.
