@@ -3,7 +3,6 @@ import requests
 import json
 from flask import Flask, request, redirect, jsonify
 
-# Spotify Credentials
 CLIENT_ID = 'e9e55e345a0149749e73a7d958746e32'
 CLIENT_SECRET = 'fc7624fb20974c04bd35a32f79cce7d4'
 REDIRECT_URI = 'https://blendjam.vercel.app/callback'
@@ -43,7 +42,17 @@ def callback():
         return jsonify({"error": "Token exchange failed", "details": res.json()})
 
     access_token = res.json().get('access_token')
-    return get_top_tracks()
+    return get_top_tracks()  # Save to JSON when user logs in
+
+@app.route('/get_tracks')
+def get_saved_tracks():
+    try:
+        with open(USER_JSON_PATH, "r") as f:
+            user_data = json.load(f)
+            latest = user_data[-1]  # return the latest user added
+            return jsonify(latest)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return jsonify({"error": "No top tracks found"}), 404
 
 def get_top_tracks():
     headers = {'Authorization': f'Bearer {access_token}'}
@@ -51,6 +60,7 @@ def get_top_tracks():
         'https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=short_term',
         headers=headers
     )
+
     if res.status_code != 200:
         return jsonify({"error": "Failed to fetch top tracks", "status": res.status_code})
 
@@ -58,7 +68,6 @@ def get_top_tracks():
     if not tracks:
         return jsonify({"error": "No top tracks found"})
 
-    # Load or initialize the file as a list
     try:
         with open(USER_JSON_PATH, "r") as file:
             user_data = json.load(file)
@@ -67,11 +76,9 @@ def get_top_tracks():
     except (FileNotFoundError, json.JSONDecodeError):
         user_data = []
 
-    # Generate new user ID
     new_user_id = str(len(user_data) + 1)
-
-    # Track data dictionary
     track_dict = {}
+
     for track in tracks:
         track_id = track.get("id")
         track_name = track.get("name")
@@ -87,22 +94,12 @@ def get_top_tracks():
             "image_url": image_url
         }
 
-    # Add new user block
     user_data.append({
         "user_id": new_user_id,
         "tracks": track_dict
     })
 
-    # Save updated file
     with open(USER_JSON_PATH, "w") as file:
         json.dump(user_data, file, indent=2)
 
-    # Return HTML response with user's data
-    return (
-        f"<h2>✅ User {new_user_id}'s Top Tracks</h2>"
-        f"<pre>{json.dumps({'user_id': new_user_id, 'tracks': track_dict}, indent=2)}</pre>"
-    )
-
-if __name__ == '__main__':
-    print("✅ Go to https://blendjam.vercel.app/callback in your browser to begin Spotify login.")
-    app.run(port=3000, debug=True)
+    return jsonify({"message": f"Saved top 50 for user {new_user_id}!"})
