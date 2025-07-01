@@ -1,4 +1,4 @@
-🎵 MixSpace
+🎵 #MixSpace
 MixSpace is a dynamic, community-powered music curation system that transforms shared spaces like gyms, cafes, or retail stores into immersive audio environments tailored to the people currently inside.
 
 🚀 What It Does
