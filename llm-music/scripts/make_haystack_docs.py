@@ -1,33 +1,41 @@
 import json
-import openai
+import requests
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def get_mood_description(track):
     prompt = (
-        f"Give a short description (1 or 2 sentences) of the song describing the mood, genre, energy, and vibe"
-        f"'{track['title']}' by {', '.join(track['artist_names'])}."
+        f"Give a short description (1 or 2 sentences) of the song describing the mood, genre, energy, and vibe of "
+        f"'{track['title']}' by {track['artist']}."
     )
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}]
-    )
-    return response.choices[0].message.content.strip()
+
+    response = requests.post("http://localhost:11434/api/chat", json={
+        "model": "llama3",
+        "messages": [
+            {"role": "user", "content": prompt}
+        ],
+        "stream": False
+    })
+
+    if response.ok:
+        return response.json()["message"]["content"].strip()
+    else:
+        print("Ollama Error:", response.text)
+        return "Description unavailable."
 
 def convert_to_haystack_docs():
-    with open("data/processed_tracks.json") as f:
+    base_dir = os.path.dirname(__file__)
+    input_path = os.path.join(base_dir, "..", "data", "processed_data.json")
+    output_path = os.path.join(base_dir, "..", "data", "haystack_docs.json")
+    with open(input_path) as f:
         tracks = json.load(f)
 
     docs = []
     for track in tracks:
         description = get_mood_description(track)
         docs.append({
-            "content": f"{track['title']} by {', '.join(track['artist_names'])}. {description} Liked by {len(track['liked_by'])} users.",
+            "content": f"{track['title']} by {track['artist']}. {description} Liked by {len(track['liked_by'])} users.",
             "meta": track
         })
 
-    with open("data/haystack_docs.json", "w") as f:
+    with open(output_path, "w") as f:
         json.dump(docs, f, indent=2)

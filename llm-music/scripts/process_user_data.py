@@ -1,6 +1,7 @@
 import json
 from collections import defaultdict
-#hello
+import os 
+
 def reformat_spotify_data():
     """
     Reformats Spotify user track data to a simplified structure and saves as JSON.
@@ -13,7 +14,9 @@ def reformat_spotify_data():
         "image_url": ""
     })
 
-    with open("raw_data.json", "r") as file:
+    base_dir = os.path.dirname(__file__)
+    raw_path = os.path.join(base_dir, "..", "data", "raw_data.json")
+    with open(raw_path, "r") as file:
         input_data = json.load(file)
 
     for user in input_data:
@@ -27,7 +30,7 @@ def reformat_spotify_data():
             track_dict[track_id]["liked_by"].append(user_id_formatted)
 
     output = list(track_dict.values())
-    output_filename = "processed_data.json"
 
-    with open(output_filename, "w") as f:
+    output_path = os.path.join(base_dir, "..", "data", "processed_data.json")
+    with open(output_path, "w") as f:
         json.dump(output, f, indent=2)
