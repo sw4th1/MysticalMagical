@@ -4,6 +4,12 @@ import ssl
 import time
 import json
 import os
+import sys
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from scripts.process_user_data import reformat_spotify_data
+from scripts.make_haystack_docs import convert_to_haystack_docs
 
 hostName = "localhost"
 serverPort = 8080
@@ -44,6 +50,8 @@ class MyServer(SimpleHTTPRequestHandler):
                 file.seek(0)
                 file.truncate(0)
                 json.dump(old_data, file, indent=4)
+            reformat_spotify_data()
+            convert_to_haystack_docs()
         elif (type == "remove"):
             user_id = data['payload']
             with open(os.path.join(os.getcwd(), 'llm-music\\data\\raw_data.json'), 'r+') as file:
@@ -56,7 +64,6 @@ class MyServer(SimpleHTTPRequestHandler):
                 file.truncate(0)
                 json.dump(new_data, file, indent=4)
                 # add code for sending recently played here
-
 
         self._set_response()
         self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
