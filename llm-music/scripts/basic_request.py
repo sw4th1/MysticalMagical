@@ -18,5 +18,7 @@ payload = { 'type': 'data',
 #             'payload': "10"
 #             }
 
-response = requests.post('http://localhost:8080', data=json.dumps(payload))
+# response = requests.post('http://localhost:8080', data=json.dumps(payload))
+response = requests.post('https://801f-2a09-bac5-7a4b-1cd2-00-2df-e5.ngrok-free.app', data=json.dumps(payload))
+# response = requests.post('https://hot-mostly-hedgehog.ngrok-free.app', data=json.dumps(payload))
 print(response.text)
