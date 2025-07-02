@@ -36,7 +36,7 @@ Dynamic Shuffle System – Rotating song selection that adapts as new users join
 Host Control Panel – Customize prompt, shuffle frequency, and playback behavior.
 
 ### 🛠️ Tech Stack
-Frontend: HTML, CSS, TypeScript
+Frontend: HTML, CSS, TypeScript, Python
 
 Backend: Python
 
