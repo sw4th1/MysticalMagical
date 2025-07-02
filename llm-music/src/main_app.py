@@ -120,9 +120,9 @@ def main(page: ft.Page):
     )
 
     img_slider = ft.Image(
-        src=f"Images/Sliders.png",
-        width=100,
-        height=100,
+        src=f"Images/animated_slider.gif",
+        width=120,
+        height=120,
         fit=ft.ImageFit.CONTAIN,
     )
     
@@ -194,7 +194,7 @@ def main(page: ft.Page):
                 width=height_width,
                 controls=[
                     ft.ElevatedButton(
-                        content=ft.Image("MysticalMagical/llm-music/src/Images/Sliders_raw.png"),
+                        content=ft.Image("Images/music_disc.gif"),
                         text="Send Values",
                         on_click=no_action,
                         width=150,
