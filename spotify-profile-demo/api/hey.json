@@ -1,0 +1,432 @@
+{
+  "type": "data",
+  "payload": {
+    "user_name": "swathi",
+    "date_saved": "2025-07-02T00:11:35.905Z",
+    "track_count": 50,
+    "tracks": {
+      "1LPGwuFgIzbJoShfDdw7MY": {
+        "name": "Youth",
+        "artist_names": [
+          "Glass Animals"
+        ],
+        "uri": "spotify:track:1LPGwuFgIzbJoShfDdw7MY",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02ec3d15eab5bd77027abc4b23"
+      },
+      "2GjMaJ7DacMIkgoe8oMXGg": {
+        "name": "Close To Me",
+        "artist_names": [
+          "Ellie Goulding",
+          "Diplo",
+          "Swae Lee"
+        ],
+        "uri": "spotify:track:2GjMaJ7DacMIkgoe8oMXGg",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e025f76dbd311a0782823550b30"
+      },
+      "6jG2YzhxptolDzLHTGLt7S": {
+        "name": "Drunk in Love (feat. JAY-Z)",
+        "artist_names": [
+          "Beyoncé",
+          "JAY-Z"
+        ],
+        "uri": "spotify:track:6jG2YzhxptolDzLHTGLt7S",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e020d1d6e9325275f104f8e33f3"
+      },
+      "5XtsfMFmpM401S6dbVaOQw": {
+        "name": "The Lost Soul Down - Slowed & Reverb",
+        "artist_names": [
+          "NBSPLV"
+        ],
+        "uri": "spotify:track:5XtsfMFmpM401S6dbVaOQw",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e029d4a4d1d3df825f282f48c59"
+      },
+      "2O9O26335YYVckmRgPKY3s": {
+        "name": "Alive",
+        "artist_names": [
+          "Empire Of The Sun"
+        ],
+        "uri": "spotify:track:2O9O26335YYVckmRgPKY3s",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02cf06b7a58c6bf3e90102bf05"
+      },
+      "2yWlGEgEfPot0lv3OAjuG3": {
+        "name": "Just Keep Watching (From F1® The Movie)",
+        "artist_names": [
+          "Tate McRae",
+          "F1 The Album"
+        ],
+        "uri": "spotify:track:2yWlGEgEfPot0lv3OAjuG3",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e0296e4cfdd4c3aa8088685b262"
+      },
+      "0wwPcA6wtMf6HUMpIRdeP7": {
+        "name": "Hotline Bling",
+        "artist_names": [
+          "Drake"
+        ],
+        "uri": "spotify:track:0wwPcA6wtMf6HUMpIRdeP7",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e029416ed64daf84936d89e671c"
+      },
+      "2IgbYlOlFpiSFYnsqB39lM": {
+        "name": "Jasmine",
+        "artist_names": [
+          "DPR LIVE"
+        ],
+        "uri": "spotify:track:2IgbYlOlFpiSFYnsqB39lM",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02aede3a5ed9bb90fb91aad963"
+      },
+      "0JbSghVDghtFEurrSO8JrC": {
+        "name": "Country Girl (Shake It For Me)",
+        "artist_names": [
+          "Luke Bryan"
+        ],
+        "uri": "spotify:track:0JbSghVDghtFEurrSO8JrC",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02dab325d38db91d858446d4b4"
+      },
+      "4jVBIpuOiMj1crqd8LoCrJ": {
+        "name": "FRANCHISE (feat. Young Thug & M.I.A.)",
+        "artist_names": [
+          "Travis Scott",
+          "Young Thug",
+          "M.I.A."
+        ],
+        "uri": "spotify:track:4jVBIpuOiMj1crqd8LoCrJ",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e0270f2ab5608885749f7210b5f"
+      },
+      "60wwxj6Dd9NJlirf84wr2c": {
+        "name": "Clarity",
+        "artist_names": [
+          "Zedd",
+          "Foxes"
+        ],
+        "uri": "spotify:track:60wwxj6Dd9NJlirf84wr2c",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02941dd3b3343d9cb9329d37bf"
+      },
+      "2DNXgvkyv35vTWvdgjs7qn": {
+        "name": "Someone New",
+        "artist_names": [
+          "Hozier"
+        ],
+        "uri": "spotify:track:2DNXgvkyv35vTWvdgjs7qn",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e024ca68d59a4a29c856a4a39c2"
+      },
+      "1CdqVF1ywD0ZO1zXtB9yWa": {
+        "name": "Break Your Heart",
+        "artist_names": [
+          "Taio Cruz",
+          "Ludacris"
+        ],
+        "uri": "spotify:track:1CdqVF1ywD0ZO1zXtB9yWa",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02a9006ae892a2255a865c0f7a"
+      },
+      "39z2CyYexbcwgD0pEeUUeu": {
+        "name": "Tapout",
+        "artist_names": [
+          "Rich Gang",
+          "Lil Wayne",
+          "Birdman",
+          "Mack Maine",
+          "Nicki Minaj",
+          "Future"
+        ],
+        "uri": "spotify:track:39z2CyYexbcwgD0pEeUUeu",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e0250c4230270a543dffaaa37f7"
+      },
+      "3IQF4xCQUPicbA4hWfTxPo": {
+        "name": "I Lived",
+        "artist_names": [
+          "OneRepublic"
+        ],
+        "uri": "spotify:track:3IQF4xCQUPicbA4hWfTxPo",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
+      },
+      "3JA9Jsuxr4xgHXEawAdCp4": {
+        "name": "Just Can’t Get Enough",
+        "artist_names": [
+          "Black Eyed Peas"
+        ],
+        "uri": "spotify:track:3JA9Jsuxr4xgHXEawAdCp4",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e029efc623f9c64c8efb583b186"
+      },
+      "58FbmtiyAlFBqFr8EorsSr": {
+        "name": "7 Summers",
+        "artist_names": [
+          "Morgan Wallen"
+        ],
+        "uri": "spotify:track:58FbmtiyAlFBqFr8EorsSr",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02d11e2e1e9a84f6fbf864536d"
+      },
+      "7ARveOiD31w2Nq0n5FsSf8": {
+        "name": "Perfect Places",
+        "artist_names": [
+          "Lorde"
+        ],
+        "uri": "spotify:track:7ARveOiD31w2Nq0n5FsSf8",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02f8553e18a11209d4becd0336"
+      },
+      "5aRZk9oWIYUB5alrTs8TTV": {
+        "name": "From Eden",
+        "artist_names": [
+          "Hozier"
+        ],
+        "uri": "spotify:track:5aRZk9oWIYUB5alrTs8TTV",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e024ca68d59a4a29c856a4a39c2"
+      },
+      "06KYwRJKN3IKOKzaWuP3ea": {
+        "name": "PLAYBOY",
+        "artist_names": [
+          "EXO"
+        ],
+        "uri": "spotify:track:06KYwRJKN3IKOKzaWuP3ea",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02f8b83bc0fb25c1526113ce86"
+      },
+      "4iuOodsAvCO3OJHZEbqrJp": {
+        "name": "Favorite",
+        "artist_names": [
+          "Isabel LaRosa"
+        ],
+        "uri": "spotify:track:4iuOodsAvCO3OJHZEbqrJp",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e029b28ffcf585984b9bd1b9b8d"
+      },
+      "6ho0GyrWZN3mhi9zVRW7xi": {
+        "name": "Losing It",
+        "artist_names": [
+          "FISHER"
+        ],
+        "uri": "spotify:track:6ho0GyrWZN3mhi9zVRW7xi",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e029367c1ee2eec0bf3a04b4868"
+      },
+      "1zi7xx7UVEFkmKfv06H8x0": {
+        "name": "One Dance",
+        "artist_names": [
+          "Drake",
+          "Wizkid",
+          "Kyla"
+        ],
+        "uri": "spotify:track:1zi7xx7UVEFkmKfv06H8x0",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e029416ed64daf84936d89e671c"
+      },
+      "68mOSKT4uBkKddEAhlMO61": {
+        "name": "Home",
+        "artist_names": [
+          "Good Neighbours"
+        ],
+        "uri": "spotify:track:68mOSKT4uBkKddEAhlMO61",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02a1cbd333da5cc7ae8f5981fb"
+      },
+      "37sINbJZcFdHFAsVNsPq1i": {
+        "name": "Superheroes",
+        "artist_names": [
+          "The Script"
+        ],
+        "uri": "spotify:track:37sINbJZcFdHFAsVNsPq1i",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e0259d2079e141301ab89b6cbc5"
+      },
+      "0FTmksd2dxiE5e3rWyJXs6": {
+        "name": "back to friends",
+        "artist_names": [
+          "sombr"
+        ],
+        "uri": "spotify:track:0FTmksd2dxiE5e3rWyJXs6",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e029d24f74c1e2d8a12b1e591ec"
+      },
+      "2kebNtlS7DqWE54Z66FZIt": {
+        "name": "Keep Your Head Up",
+        "artist_names": [
+          "Andy Grammer"
+        ],
+        "uri": "spotify:track:2kebNtlS7DqWE54Z66FZIt",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02ef49291de801a09453197222"
+      },
+      "61uyGDPJ06MkxJtHgPmuyO": {
+        "name": "Company",
+        "artist_names": [
+          "Justin Bieber"
+        ],
+        "uri": "spotify:track:61uyGDPJ06MkxJtHgPmuyO",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02f46b9d202509a8f7384b90de"
+      },
+      "1XJQ7xI6jzcZybuHemxsPP": {
+        "name": "To Be Alone",
+        "artist_names": [
+          "Hozier"
+        ],
+        "uri": "spotify:track:1XJQ7xI6jzcZybuHemxsPP",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e024ca68d59a4a29c856a4a39c2"
+      },
+      "3U5JVgI2x4rDyHGObzJfNf": {
+        "name": "Unwritten",
+        "artist_names": [
+          "Natasha Bedingfield"
+        ],
+        "uri": "spotify:track:3U5JVgI2x4rDyHGObzJfNf",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02b337e1ca6629a53c66a3b0d4"
+      },
+      "3W7KHojYGgYaoX9ogKO9hU": {
+        "name": "Nothing's Gonna Hurt You Baby",
+        "artist_names": [
+          "Cigarettes After Sex"
+        ],
+        "uri": "spotify:track:3W7KHojYGgYaoX9ogKO9hU",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02f20d15ff288e94492f7097eb"
+      },
+      "126HWk9JuCt4PHZJAAsgOv": {
+        "name": "Thé à la menthe (The Lazer Dance Version) [Instrumental]",
+        "artist_names": [
+          "La Caution"
+        ],
+        "uri": "spotify:track:126HWk9JuCt4PHZJAAsgOv",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02d3ddd4361d835095a06a70bf"
+      },
+      "6cREm4bV7V79Yxdilx9HDo": {
+        "name": "Once In a While",
+        "artist_names": [
+          "Timeflies"
+        ],
+        "uri": "spotify:track:6cREm4bV7V79Yxdilx9HDo",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02f7ffc65ac66f1de04e0aa82f"
+      },
+      "6Jv7kjGkhY2fT4yuBF3aTz": {
+        "name": "Lover, You Should've Come Over",
+        "artist_names": [
+          "Jeff Buckley"
+        ],
+        "uri": "spotify:track:6Jv7kjGkhY2fT4yuBF3aTz",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e026a760642a56847027428cb61"
+      },
+      "1fBl642IhJOE5U319Gy2Go": {
+        "name": "Animal",
+        "artist_names": [
+          "Neon Trees"
+        ],
+        "uri": "spotify:track:1fBl642IhJOE5U319Gy2Go",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e0226ca7305db69aa21efcf2b7a"
+      },
+      "4AajxCEwGEsmHmT4H1TwjY": {
+        "name": "undressed",
+        "artist_names": [
+          "sombr"
+        ],
+        "uri": "spotify:track:4AajxCEwGEsmHmT4H1TwjY",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02dad39d4906f76b7c176effb1"
+      },
+      "0ug5NqcwcFR2xrfTkc7k8e": {
+        "name": "Style",
+        "artist_names": [
+          "Taylor Swift"
+        ],
+        "uri": "spotify:track:0ug5NqcwcFR2xrfTkc7k8e",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e0252b2a3824413eefe9e33817a"
+      },
+      "1N62wozuHCvczCkY4QidpP": {
+        "name": "Over My Head (Cable Car)",
+        "artist_names": [
+          "The Fray"
+        ],
+        "uri": "spotify:track:1N62wozuHCvczCkY4QidpP",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e0259b8b957f164ce660919f1f4"
+      },
+      "2x0WlnmfG39ZuDmstl9xfX": {
+        "name": "End Game",
+        "artist_names": [
+          "Taylor Swift",
+          "Ed Sheeran",
+          "Future"
+        ],
+        "uri": "spotify:track:2x0WlnmfG39ZuDmstl9xfX",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02da5d5aeeabacacc1263c0f4b"
+      },
+      "3Tgv4rvWBVwnbmUTlJwzk0": {
+        "name": "Do I Wanna Know? - Live At the BBC",
+        "artist_names": [
+          "Hozier"
+        ],
+        "uri": "spotify:track:3Tgv4rvWBVwnbmUTlJwzk0",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e022303ece0e9af3917d0bce05f"
+      },
+      "4BycRneKmOs6MhYG9THsuX": {
+        "name": "Find Your Love",
+        "artist_names": [
+          "Drake"
+        ],
+        "uri": "spotify:track:4BycRneKmOs6MhYG9THsuX",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e0211b21e8b868800918d21bb77"
+      },
+      "1QEzs30PUAJJPbHL1e4NYH": {
+        "name": "Silver Springs - Live at Warner Brothers Studios in Burbank, CA 5/23/97",
+        "artist_names": [
+          "Fleetwood Mac"
+        ],
+        "uri": "spotify:track:1QEzs30PUAJJPbHL1e4NYH",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e020b8de3e1eb45d3b13bdb7057"
+      },
+      "77Oww6V7jooOd7aNEMnFJ3": {
+        "name": "Take My Breath Away - Love Theme from \\\\\"Top Gun\\\\\"",
+        "artist_names": [
+          "Berlin"
+        ],
+        "uri": "spotify:track:77Oww6V7jooOd7aNEMnFJ3",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e0254c5478cbb4de237fecf5e54"
+      },
+      "0F4FejjWi3bf5vGOkuQwPS": {
+        "name": "On My Own",
+        "artist_names": [
+          "Darci"
+        ],
+        "uri": "spotify:track:0F4FejjWi3bf5vGOkuQwPS",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02d75523282bf3ba41ea85234f"
+      },
+      "6Tw2x3wavaWsboio2Cy44I": {
+        "name": "FIANCÉ",
+        "artist_names": [
+          "MINO"
+        ],
+        "uri": "spotify:track:6Tw2x3wavaWsboio2Cy44I",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e0268bc19df3564f7e8c828cbe0"
+      },
+      "7kv7zBjMtVf0eIJle2VZxn": {
+        "name": "Southern Nights",
+        "artist_names": [
+          "Glen Campbell"
+        ],
+        "uri": "spotify:track:7kv7zBjMtVf0eIJle2VZxn",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02461762c15f05e141fe6f3097"
+      },
+      "28drn6tQo95MRvO0jQEo5C": {
+        "name": "Type Shit",
+        "artist_names": [
+          "Future",
+          "Metro Boomin",
+          "Travis Scott",
+          "Playboi Carti"
+        ],
+        "uri": "spotify:track:28drn6tQo95MRvO0jQEo5C",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e021729574fe2a8e391a2ce1ece"
+      },
+      "52itZ0w0CydihB2JCZEIft": {
+        "name": "Pee Loon",
+        "artist_names": [
+          "Pritam",
+          "Mohit Chauhan",
+          "Irshad Kamil"
+        ],
+        "uri": "spotify:track:52itZ0w0CydihB2JCZEIft",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02df934f4de5f8dd46f8d75f5f"
+      },
+      "5OcxthvGOxWYsuwKrWk5U4": {
+        "name": "Time To Pretend",
+        "artist_names": [
+          "MGMT"
+        ],
+        "uri": "spotify:track:5OcxthvGOxWYsuwKrWk5U4",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e027addf1f64798c10d3bd6b27c"
+      },
+      "5Z3GHaZ6ec9bsiI5BenrbY": {
+        "name": "Young Dumb & Broke",
+        "artist_names": [
+          "Khalid"
+        ],
+        "uri": "spotify:track:5Z3GHaZ6ec9bsiI5BenrbY",
+        "image_url": "https://i.scdn.co/image/ab67616d00001e02988ede5e1276e758b5f9e577"
+      }
+    }
+  }
+}
