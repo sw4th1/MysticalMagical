@@ -21,12 +21,9 @@ interface Track {
 }
 
 interface UserData {
-  user_name: string;
-  date_saved: string;
-  track_count: number;
+  user_id: string;
   tracks: { [key: string]: {
     name: string;
-    artist_names: string[];
     uri: string;
     image_url: string;
   }};
@@ -46,7 +43,7 @@ interface UserData {
         try {
           const tracks = await fetchTopTracks(accessToken);
           renderTopTracks(tracks);
-          saveTracksAsJSON(tracks, profile.display_name);
+          saveTracksAsJSON(tracks);
         } catch (error) {
           console.error("Error fetching top tracks:", error);
           alert("Failed to fetch top tracks. Please try again.");
@@ -120,7 +117,7 @@ async function fetchProfile(token: string): Promise<UserProfile> {
 }
 
 async function fetchTopTracks(token: string): Promise<Track[]> {
-  const result = await fetch("https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=short_term", {
+  const result = await fetch("https://api.spotify.com/v1/me/top/tracks?limit=24&time_range=short_term", {
     headers: { Authorization: `Bearer ${token}` },
   });
 
@@ -141,46 +138,77 @@ async function fetchTopTracks(token: string): Promise<Track[]> {
   }));
 }
 
-function saveTracksAsJSON(tracks: Track[], userName: string): void {
-  const userData: UserData = {
-    user_name: userName,
-    date_saved: new Date().toISOString(),
-    track_count: tracks.length,
-    tracks: {}
-  };
+function saveTracksAsJSON(tracks: Track[]): void {
+  try {
+    const sanitizedTracks: { [key: string]: any } = {};
+    
+    tracks.forEach(track => {
+      sanitizedTracks[track.id] = {
+        name: sanitizeString(track.name),
+        uri: sanitizeString(track.uri),
+        image_url: sanitizeString(track.image_url)
+      };
+    });
 
-  // Convert tracks to object format
-  tracks.forEach(track => {
-    userData.tracks[track.id] = {
-      name: track.name,
-      artist_names: track.artist_names,
-      uri: track.uri,
-      image_url: track.image_url
+    const userData: UserData = {
+      user_id: "1",
+      tracks: sanitizedTracks
     };
-  });
 
-  // Wrap in the required format
-  const payload = {
-    type: 'data',
-    payload: userData
-  };
+    const payload = {
+      type: 'data',
+      payload: userData
+    };
 
-  // Log the JSON
-  console.log("🎵 Sending Top Tracks Data:");
-  console.log(JSON.stringify(payload, null, 2));
+    console.log("🎵 Sending Top Tracks Data:");
+    console.log("Payload size:", JSON.stringify(payload).length, "characters");
+    
+    const jsonString = JSON.stringify(payload, null, 2);
+    console.log("✅ JSON validation passed");
+    console.log(jsonString);
 
-  // POST to your ngrok URL
-  postDataToServer(payload);
+    postDataToServer(payload);
+    
+    // download
+    addDownloadButton(payload);
+  } catch (error) {
+    console.error("❌ Error preparing data:", error);
+    
+    // error message
+    const message = document.createElement("div");
+    message.style.cssText = "margin: 10px 0; padding: 15px; background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 5px;";
+    message.textContent = `Error preparing data: ${error instanceof Error ? error.message : 'Unknown error'}`;
+    
+    const tracksSection = document.getElementById("topTracks")!;
+    tracksSection.insertBefore(message, tracksSection.firstChild);
+  }
+}
+
+// sanitize string maybe ...?
+function sanitizeString(str: any): string {
+  if (typeof str !== 'string') {
+    return String(str || '');
+  }
+  
+  return str
+    .replace(/[\u0000-\u001F\u007F-\u009F]/g, '') 
+    .replace(/"/g, '\\"') 
+    .replace(/\\/g, '\\\\') 
+    .trim();
 }
 
 async function postDataToServer(data: any): Promise<void> {
-  // Log the data for debugging
-  console.log("📦 Spotify Data being sent:");
-  console.log(JSON.stringify(data, null, 2));
+  console.log("data being sent");
   
   try {
-    console.log("🚀 Sending to HTTPS ngrok server...");
+    // check characters
+    const jsonString = JSON.stringify(data);
+    console.log("data size:", jsonString.length, "characters");
     
+    if (jsonString.length > 1000000) { // too large
+      throw new Error("Data too large - consider reducing track count");
+    }
+        
     const response = await fetch('https://936a-66-253-203-14.ngrok-free.app', {
       method: 'POST',
       mode: 'cors',
@@ -189,21 +217,29 @@ async function postDataToServer(data: any): Promise<void> {
         'ngrok-skip-browser-warning': 'true',
         'Accept': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: jsonString
     });
 
-    console.log("📡 Response status:", response.status);
+    console.log("response status:", response.status);
+    console.log("response headers:", Object.fromEntries(response.headers.entries()));
 
     if (response.ok) {
       let responseData;
-      try {
-        responseData = await response.json();
-      } catch {
-        responseData = await response.text();
-      }
-      console.log("✅ Data sent successfully!", responseData);
+      const contentType = response.headers.get('content-type');
       
-      // Show success message
+      try {
+        if (contentType && contentType.includes('application/json')) {
+          responseData = await response.json();
+        } else {
+          responseData = await response.text();
+        }
+      } catch (parseError) {
+        console.warn("Could not parse response:", parseError);
+        responseData = "Response received but could not parse";
+      }
+      
+      console.log("data sent successfully!", responseData);
+      
       const message = document.createElement("div");
       message.style.cssText = "margin: 10px 0; padding: 10px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 5px; text-align: center;";
       message.textContent = "✅ Top tracks data sent successfully to your server!";
@@ -219,6 +255,7 @@ async function postDataToServer(data: any): Promise<void> {
       
     } else {
       const errorText = await response.text();
+      console.error("Server error response:", errorText);
       throw new Error(`Server responded with status: ${response.status}. Response: ${errorText}`);
     }
     
@@ -229,44 +266,18 @@ async function postDataToServer(data: any): Promise<void> {
     
     if (error instanceof TypeError && error.message.includes('fetch')) {
       errorMessage = 'Network/CORS error - Cannot reach server';
+    } else if (error instanceof SyntaxError) {
+      errorMessage = 'JSON parsing error - check for special characters in track data';
     } else if (error instanceof Error) {
       errorMessage = error.message;
     }
     
-    // Show error message with copy option
     const message = document.createElement("div");
     message.style.cssText = "margin: 10px 0; padding: 15px; background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 5px;";
-    message.innerHTML = `
-      <div style="font-weight: bold; margin-bottom: 10px;">❌ Failed to send data: ${errorMessage}</div>
-      <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 12px; margin: 10px 0;">
-        <strong>💡 Fallback:</strong> Your data is logged to the console - you can copy it manually.
-      </div>
-      <button id="copyDataBtn" style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
-        📋 Copy Data to Clipboard
-      </button>
-    `;
+    message.textContent = `❌ Error sending data: ${errorMessage}`;
     
     const tracksSection = document.getElementById("topTracks")!;
     tracksSection.insertBefore(message, tracksSection.firstChild);
-    
-    // Add copy functionality
-    const copyBtn = message.querySelector('#copyDataBtn');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText(JSON.stringify(data, null, 2)).then(() => {
-          copyBtn.textContent = '✅ Copied!';
-          setTimeout(() => {
-            copyBtn.textContent = '📋 Copy Data to Clipboard';
-          }, 2000);
-        });
-      });
-    }
-    
-    setTimeout(() => {
-      if (message.parentNode) {
-        message.parentNode.removeChild(message);
-      }
-    }, 10000);
   }
 }
 
@@ -315,4 +326,64 @@ function populateUI(profile: UserProfile) {
   document.getElementById("url")!.innerText = profile.href;
   document.getElementById("url")!.setAttribute("href", profile.href);
   document.getElementById("imgUrl")!.innerText = profile.images[0]?.url ?? "(no profile image)";
+}
+
+function addDownloadButton(data: any): void {
+  const existingButton = document.getElementById("downloadJson");
+  if (existingButton) {
+    existingButton.remove();
+  }
+
+  const downloadButton = document.createElement("button");
+  downloadButton.id = "downloadJson";
+  downloadButton.textContent = "📥 Download JSON";
+  downloadButton.style.cssText = `
+    margin: 10px 0; 
+    padding: 10px 20px; 
+    background: #1db954; 
+    color: white; 
+    border: none; 
+    border-radius: 25px; 
+    cursor: pointer; 
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  `;
+
+  downloadButton.addEventListener("mouseenter", () => {
+    downloadButton.style.backgroundColor = "#1ed760";
+  });
+
+  downloadButton.addEventListener("mouseleave", () => {
+    downloadButton.style.backgroundColor = "#1db954";
+  });
+
+  downloadButton.addEventListener("click", () => {
+    downloadJSON(data);
+  });
+
+  const tracksSection = document.getElementById("topTracks")!;
+  tracksSection.insertBefore(downloadButton, tracksSection.firstChild);
+}
+
+function downloadJSON(data: any): void {
+  try {
+    const jsonString = JSON.stringify(data, null, 2);
+    const blob = new Blob([jsonString], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `spotify-top-tracks-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    URL.revokeObjectURL(url);
+    
+    console.log("✅ JSON file downloaded successfully");
+  } catch (error) {
+    console.error("❌ Error downloading JSON:", error);
+    alert("Failed to download JSON file. Please try again.");
+  }
 }
