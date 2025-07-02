@@ -1,18 +1,28 @@
 import flet as ft
 import requests
+import json
 
 # from flet.border import BorderSide
 # from flet.buttons import RoundedRectangleBorder
 
 
 # The URL endpoint to send the POST request to
-url = "http://127.0.0.1:5000/receive_data"
+url = "https://801f-2a09-bac5-7a4b-1cd2-00-2df-e5.ngrok-free.app"
 
 # Data to be sent in the request body (as form-encoded data)
+# payload_json = {
+#     "filter": "",
+#     "timer": "5"
+# }
+
 payload_json = {
-    "filter": "",
-    "timer": "5"
+    'type': 'settings',
+    'payload': {
+        'filter': "",
+        'timer': "5"
+    }
 }
+
 
 height_width = 500  # Default size for the window and controls
 
@@ -85,14 +95,21 @@ def main(page: ft.Page):
 
         try:
             # Update the payload with the current values
-            payload_json["filter"] = " ".join(prompt_text)  # Join words with spaces
-            payload_json["timer"] = str(mix_timer)  # Convert timer to string
-            response_json = requests.post(url, json=payload_json)
+            payload_json["payload"]["filter"] = " ".join(prompt_text)  # Join words with spaces
+            payload_json["payload"]["timer"] = str(mix_timer)  # Convert timer to string
+            # Send the POST request with JSON data
+            # response_json = requests.post(url, json=payload_json)
+            json_object_string = json.dumps(payload_json, indent=4)
+            print("Payload JSON:", payload_json)  # Print the payload for debugging
+            print("Payload JSON String:", json_object_string)  # Print the JSON string for debugging
+
+
+            response_json = requests.post(url, data=json_object_string)
             response_json.raise_for_status() # Raise an exception for bad status codes (4xx or 5xx)
-            print("POST request with JSON data successful!")
+            print("POST request with form data successful!")
             print("Response JSON:", response_json.json())
         except requests.RequestException as e:
-            print("An error occurred while sending the request:", e)
+            print(f"An error occurred with form data: {e}")
 
 
     text_Title = ft.Text(
