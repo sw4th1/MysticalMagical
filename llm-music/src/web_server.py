@@ -66,8 +66,10 @@ class MyServer(SimpleHTTPRequestHandler):
                 json.dump(new_data, file, indent=4)
                 # add code for sending recently played here
         elif (type == "settings"):
-            prompt = data['payload']['filter']
-            run_query_loop(prompt)
+            payload = data['payload']
+            prompt = payload['filter']
+            results = run_query_loop(prompt)
+            print(results)
         self._set_response()
         self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
 
