@@ -1,4 +1,4 @@
-from haystack_pipeline import build_pipeline
+from src.haystack_pipeline import build_pipeline
 
 def run_query_loop(initial_prompt):
     pipeline = build_pipeline()
