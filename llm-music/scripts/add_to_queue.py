@@ -5,8 +5,7 @@ ACCESS_TOKEN = 'e9e55e345a0149749e73a7d958746e32'
 DEVICE_ID = 'ba981595a4c3a0c5deabaa84688af0dd29d308ac'
 SPOTIFY_QUEUE_ENDPOINT = 'https://api.spotify.com/v1/me/player/queue'
 
-def add_tracks_to_queue(track_uris):
-    access_token=ACCESS_TOKEN
+def add_tracks_to_queue(track_uris, access_token):
     headers = {
         "Authorization": f"Bearer {access_token}"
     }
