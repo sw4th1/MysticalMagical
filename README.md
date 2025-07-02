@@ -45,7 +45,7 @@ APIs: Spotify Web API (OAuth 2.0, Top Tracks, Track Metadata)
 Authentication: Spotify Authentication
 
 ### 💡 Use Cases
-Gyms: Energize the space with songs your members actually listen to.
+Gyms: Energize the space with songs your members ACTUALLY listen to.
 
 Cafes: Create a relaxing vibe that reflects the crowd.
 
