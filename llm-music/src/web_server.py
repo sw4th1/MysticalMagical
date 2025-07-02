@@ -10,6 +10,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from scripts.process_user_data import reformat_spotify_data
 from scripts.make_haystack_docs import convert_to_haystack_docs
+from src.run_query import run_query_loop
 
 hostName = "localhost"
 serverPort = 8080
@@ -64,7 +65,9 @@ class MyServer(SimpleHTTPRequestHandler):
                 file.truncate(0)
                 json.dump(new_data, file, indent=4)
                 # add code for sending recently played here
-
+        elif (type == "settings"):
+            prompt = data['payload']['filter']
+            run_query_loop(prompt)
         self._set_response()
         self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
 
