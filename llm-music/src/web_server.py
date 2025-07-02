@@ -25,6 +25,32 @@ serverPort = 8080
 context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 context.load_cert_chain(certfile="cert.pem", keyfile="key.pem")
 
+def get_access_token():
+        url = "https://accounts.spotify.com/api/token"
+
+        # Encode Client ID and Secret
+        auth_str = f"{CLIENT_ID}:{CLIENT_SECRET}"
+        b64_auth_str = base64.b64encode(auth_str.encode()).decode()
+
+        headers = {
+            "Authorization": f"Basic {b64_auth_str}",
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+
+        data = {
+            "grant_type": "client_credentials"
+        }
+
+        response = requests.post(url, headers=headers, data=data)
+        if response.status_code == 200:
+            token_info = response.json()
+            access_token = token_info["access_token"]
+            print("Access token:", access_token)
+            return access_token
+        else:
+            print("Failed to get token:", response.json())
+            return None
+
 class MyServer(SimpleHTTPRequestHandler):
     def _set_response(self):
         self.send_response(200)
@@ -76,6 +102,7 @@ class MyServer(SimpleHTTPRequestHandler):
             payload = data['payload']
             prompt = payload['filter']
             results = run_query_loop(prompt)
+            access_token = get_access_token()
             add_tracks_to_queue(results, access_token)
         self._set_response()
         self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
@@ -89,50 +116,11 @@ class MyServer(SimpleHTTPRequestHandler):
 
     def do_OPTIONS(self):
         self.send_response(200)
-        self.end_headers()    
+        self.end_headers()  
+
+
 
 if __name__ == "__main__":        
-        # URLS
-    AUTH_URL = 'https://accounts.spotify.com/authorize'
-    TOKEN_URL = 'https://accounts.spotify.com/api/token'
-    BASE_URL = 'https://api.spotify.com/v1/'
-
-
-    # Make a request to the /authorize endpoint to get an authorization code
-    auth_code = requests.get(AUTH_URL, {
-        'client_id': CLIENT_ID,
-        'response_type': 'code',
-        'redirect_uri': 'https://open.spotify.com/collection/playlists',
-        'scope': 'playlist-modify-private',
-    })
-    print(auth_code)
-
-    auth_header = base64.urlsafe_b64encode((CLIENT_ID + ':' + CLIENT_SECRET).encode())
-    
-    headers = {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic %s' % auth_header.decode('ascii')
-    }
-
-    payload = {
-        'grant_type': 'authorization_code',
-        'code': auth_code,
-        'redirect_uri': 'https://open.spotify.com/collection/playlists',
-        #'client_id': CLIENT_ID,
-        #'client_secret': CLIENT_SECRET,
-    }
-
-    # Make a request to the /token endpoint to get an access token
-    access_token_request = requests.post(url=TOKEN_URL, data=payload, headers=headers)
-
-    # convert the response to JSON
-    access_token_response_data = access_token_request.json()
-
-    print(access_token_response_data)
-
-    # save the access token
-    access_token = access_token_response_data['access_token']
-
     webServer = HTTPServer((hostName, serverPort), MyServer)
     print("Server started http://%s:%s" % (hostName, serverPort))
 
