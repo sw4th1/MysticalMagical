@@ -194,7 +194,7 @@ def main(page: ft.Page):
                 width=height_width,
                 controls=[
                     ft.ElevatedButton(
-                        content=ft.Image("Images/music_disc.gif"),
+                        content=ft.Image("MysticalMagical/llm-music/src/Images/Sliders_raw.png"),
                         text="Send Values",
                         on_click=no_action,
                         width=150,
