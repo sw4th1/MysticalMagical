@@ -7,7 +7,7 @@ import json
 
 
 # The URL endpoint to send the POST request to
-url = "https://936a-66-253-203-14.ngrok-free.app"
+url = "https://f055-66-253-203-14.ngrok-free.app"
 
 # Data to be sent in the request body (as form-encoded data)
 # payload_json = {

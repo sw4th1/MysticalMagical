@@ -12,3 +12,5 @@ echo "Starting Python web server..."
 # Ensure this path is correct relative to the WORKDIR (/app) in your Dockerfile.
 # Given your structure, web_server.py is in src/, so the path is src/web_server.py
 python src/web_server.py
+
+
